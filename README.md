@@ -10,8 +10,9 @@ DESCRIPTION
 -----------
 
 Raspberry Pi requires some special command execution to physically
-turn on / off HDMI ports.  This utility cooperates with xscreensaver
+turn on / off HDMI ports. This utility cooperates with xscreensaver
 to physically turn off and on the HDMI output when necessary.
+In this implementation **vcgencmd** is used to turn monitor off.
 
 `dpkg -S $(which tvservice)`  
 `libraspberrypi-bin: /usr/bin/tvservice`  
@@ -21,18 +22,22 @@ Based on scripts in a forum post, but packaged for debian / raspbian.
   http://www.raspberrypi.org/phpBB3/viewtopic.php?t=56944&p=429723  
   by simonmcc » Mon Sep 30, 2013 7:49 am  
 
-For the impatient:
+To build and install:
+`git clone http://github.com/rstefko/xscreensaver-pi-hdmi`
+`cd xscreensaver-pi-hdmi`
+`dpkg-buildpackage`
+`cd ..`
+`sudo dpkg -i ./xscreensaver-pi-hdmi_*.deb`
+
+Add permissions:
 
 `# direct control of HDMI / framebuffer needs special permissions`  
 `sudo adduser $USER video`  
 
-In your ~/.xsession file:
+In your ~/.config/lxsession/LXDE-pi/autstart file:
 
-`# start xscreensaver`  
-`xscreensaver &`  
-
-`# start xscreensaver status monitor`  
-`xscreensaver-pi-hdmi &`  
+`@xscreensaver -no-splash`
+`@xscreensaver-pi-hdmi`
 
 AUTHOR
 ------

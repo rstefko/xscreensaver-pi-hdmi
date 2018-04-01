@@ -36,24 +36,12 @@ interrupt_potential_sleeping_processes() {
 
 
 hdmi_off() {
-    # no --quiet switch
-    tvservice --off > /dev/null
+    vcgencmd display_power 0 > /dev/null
 }
 
 
 hdmi_on() {
-    # get the current state of HDMI output
-    tvservice --status | grep -q HDMI
-    RESULT=$?
-
-    # if HDMI was not found, RESULT=1 ... turn it back on
-    if [ "$RESULT" -eq 1 ] ; then
-       # no --quiet switch
-       tvservice --preferred > /dev/null
-       fbset -depth 8
-       fbset -depth 16
-       xrefresh
-    fi
+    vcgencmd display_power 1 > /dev/null
 }
 
 # failsafe to make sure monitor stays on in case of quit
