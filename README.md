@@ -23,6 +23,7 @@ Based on scripts in a forum post, but packaged for debian / raspbian.
   by simonmcc » Mon Sep 30, 2013 7:49 am  
 
 To build and install:
+
 `git clone http://github.com/rstefko/xscreensaver-pi-hdmi`
 `cd xscreensaver-pi-hdmi`
 `dpkg-buildpackage`
