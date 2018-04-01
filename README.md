@@ -25,25 +25,25 @@ Based on scripts in a forum post, but packaged for debian / raspbian.
 To build and install:
 
 `git clone http://github.com/rstefko/xscreensaver-pi-hdmi`
-`cd xscreensaver-pi-hdmi`
-`dpkg-buildpackage`
-`cd ..`
-`sudo dpkg -i ./xscreensaver-pi-hdmi_*.deb`
+`cd xscreensaver-pi-hdmi`  
+`dpkg-buildpackage`  
+`cd ..`  
+`sudo dpkg -i ./xscreensaver-pi-hdmi_*.deb`  
 
 Add permissions:
 
 `# direct control of HDMI / framebuffer needs special permissions`  
 `sudo adduser $USER video`  
 
-In your ~/.config/lxsession/LXDE-pi/autstart file:
+In your ~/.config/lxsession/LXDE-pi/autostart file:
 
-`@xscreensaver -no-splash`
-`@xscreensaver-pi-hdmi`
+`@xscreensaver -no-splash`  
+`@xscreensaver-pi-hdmi`  
 
 AUTHOR
 ------
 
-Initial inspiration from simonmcc » Mon Sep 30, 2013 7:49 am   
+Initial inspiration from simonmcc » Mon Sep 30, 2013 7:49 am  
 (http://www.raspberrypi.org/phpBB3/viewtopic.php?t=56944&p=429723)  
 Bash implementation and Debian packaging by Robert Ames <ramses0@yahoo.com>  
 
